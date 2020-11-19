@@ -10,8 +10,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Home(),
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
-      ),
+          primarySwatch: Colors.yellow,
+          highlightColor: Color.fromRGBO(255, 255, 255, 0.5)),
     );
   }
 }
