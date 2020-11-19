@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttercourse/model/posts.dart';
 
 import 'list_view_demo.dart';
 
@@ -11,11 +12,6 @@ class Home extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.grey[100],
           appBar: AppBar(
-            leading: IconButton(
-              icon: Icon(Icons.menu),
-              tooltip: '导航栏',
-              onPressed: null,
-            ),
             actions: <Widget>[
               IconButton(
                 icon: Icon(Icons.search),
@@ -44,6 +40,61 @@ class Home extends StatelessWidget {
               ListViewDemo(),
             ],
           ),
+          drawer: Drawer(
+              child: ListView(
+            padding: EdgeInsets.all(0),
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                accountName:
+                    Text('慕谦', style: TextStyle(fontWeight: FontWeight.bold)),
+                accountEmail: Text('769288695@qq.com'),
+                currentAccountPicture: CircleAvatar(
+                    backgroundImage: NetworkImage(postInfo.imageUrl)),
+                decoration: BoxDecoration(
+                    color: Colors.yellow[400],
+                    image: DecorationImage(
+                      image: NetworkImage(postsNet[1].imageUrl),
+                      fit: BoxFit.cover,
+                    )),
+              ),
+              ListTile(
+                title: Text(
+                  'Message',
+                  textAlign: TextAlign.right,
+                ),
+                trailing: Icon(
+                  Icons.message,
+                  color: Colors.black12,
+                  size: 22.0,
+                ),
+                onTap: () => Navigator.pop(context),
+              ),
+              ListTile(
+                title: Text(
+                  'Favorite',
+                  textAlign: TextAlign.right,
+                ),
+                trailing: Icon(
+                  Icons.favorite,
+                  color: Colors.black12,
+                  size: 22.0,
+                ),
+                onTap: () => Navigator.pop(context),
+              ),
+              ListTile(
+                title: Text(
+                  'Setting',
+                  textAlign: TextAlign.right,
+                ),
+                trailing: Icon(
+                  Icons.settings,
+                  color: Colors.black12,
+                  size: 22.0,
+                ),
+                onTap: () => Navigator.pop(context),
+              )
+            ],
+          )),
         ));
   }
 }
